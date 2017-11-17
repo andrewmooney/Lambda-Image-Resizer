@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  ImgResizer:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Timeout: 60
+      Runtime: nodejs6.10
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /{bucket}/{img}/{dimensions}
+            Method: get
